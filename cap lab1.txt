@@ -1,0 +1,51 @@
+package com;
+import java.util.*;
+public class Lab1 {
+	 public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println(calculateSum(s.nextInt()));
+//		System.out.println(calculateDifference(s.nextInt()));
+//		System.out.println(checkNumber(s.nextInt()));
+		System.out.println(checkNumber2(s.nextInt()));
+		
+		s.close();
+
+	}
+	static int calculateSum(int n) {
+		/**
+		 * Calculate the sum of first n natural numbers which are divisible by 3 or 5.
+		 */
+		int sum=0;
+		for(int i=3;i<=n;i++) if((i%3==0) || (i%5==0))sum+=i;
+		return sum;
+	}
+	static int calculateDifference(int n) {
+		/**
+		 * difference between the sum of the squares of the first n natural numbers and the square of their sum
+		 */
+		
+		int sumEachSquare=0;
+		int sumWholeSquare=0;
+		for(int i=1;i<=n;i++) {
+			sumEachSquare+=Math.pow(i,2);
+			sumWholeSquare+=i;
+		}
+		return sumEachSquare-(int)Math.pow(sumWholeSquare, 2);
+	}
+	static boolean checkNumber(int n) {
+		/**Check if a number is an increasing number */
+		
+		int previousValue=n%10;
+		while(n!=0) {
+			if(previousValue<n%10)return false;
+			previousValue=n%10;
+			n/=10;
+		}
+		return true;
+	}
+	static boolean checkNumber2(int n) {
+		/**Checks if the entered number is a power of two or not 		 */
+		
+		while(n>2)n/=2;
+		return n==2;
+	}
